@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>Personīgā Lapa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #fcf9f0;
+      --bg-dark: #1c1a17;
+      --text-light: #2e2e2e;
+      --text-dark: #eae0c8;
+      --accent: #bfa46f;
+      --border-color: #d3c3a3;
+      --font: 'Playfair Display', serif;
+    }
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  display: inline-block;
+  margin: 0 8px;
+  transition: transform 0.2s;
+}
+
+.social-links a img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%) brightness(1.2);
+}
+
+.social-links a:hover img {
+  transform: scale(1.1);
+  filter: none;
+}
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color 0.4s, color 0.4s;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .dark-theme {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5em 2em;
+      background-color: var(--accent);
+      color: white;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .dark-theme header {
+      background-color: #3a2e1d;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+    }
+
+    .lang-option img {
+      width: 24px;
+      height: 16px;
+      margin-right: 6px;
+    }
+
+    .lang-option.active {
+      border: 2px solid white;
+      background-color: rgba(255,255,255,0.3);
+    }
+
+    button.theme-btn {
+      background: none;
+      border: 1px solid white;
+      padding: 0.5em 1em;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: var(--font);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 3em auto;
+      background-color: #fff8ed;
+      border: 2px solid var(--border-color);
+      padding: 3em 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .dark-theme .container {
+      background-color: #2b241c;
+      border-color: #6c5b3b;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 1em;
+      color: var(--accent);
+    }
+
+    .dark-theme h1 {
+      color: #d1ba86;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="lang-switch" id="langSelector">
+      <!-- Dinamiska valodu izvēle -->
+    </div>
+    <div>
+      <button class="theme-btn" onclick="toggleTheme()">🌗 Tēma</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 id="title">Par Mani</h1>
+    <p id="content"></p>
+  </div>
+
+<footer>
+  &copy; 2025 Artjoms. Visi tiesības aizsargātas. <br>
+  <div class="social-links">
+    <a href="https://www.youtube.com" target="_blank" title="YouTube">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+    </a>
+  </div>
+</footer>
+
+  <script>
+    const translations = {
+      lv: {
+        name: "Latviešu",
+        title: "Par Mani",
+        content: `Mani sauc Artjoms, un es dzīvoju Rīgā, Latvijā. Esmu pabeidzu Rīgas Valsts klasisko ģimnāziju un šobrīd turpinu izglītību Rīgas Tehniskajā koledžā, kur apgūstu programmēšanas virzienu.
+Jau kopš skolas gadiem mani īpaši saista vēsture, ģeogrāfija un matemātika — priekšmeti, kuros es ne tikai gūstu zināšanas, bet arī rodu patiesu prieku un iedvesmu. 9. klases noslēgumā man bija iespēja izmēģināt sevi kā skolotājam: es vadīju vairākas matemātikas, vēstures un ģeogrāfijas stundas. Šī pieredze man sniedza ne tikai jaunu skatījumu uz mācību procesu, bet arī pārliecību par savām spējām — saņēmu pozitīvas atsauksmes gan no skolotājiem, gan no klasesbiedriem, kas atzina manu spēju skaidri un saprotami izklāstīt vielu, kā arī veicināt interesi par tematu.
+Brīvajos brīžos labprāt skatos video par viduslaiku notikumiem, kolonizācijas laikmetu un citiem vēsturiskiem posmiem, lai paplašinātu redzesloku jo, šī aizrautība ar vēsturiskiem notikumiem ir cieši saistīta ar manu hobiju — rakstīšanu.`
+      },
+      en: {
+        name: "English",
+        title: "About Me",
+        content: `My name is Artjoms, and I live in Riga, Latvia. I graduated from Riga State Classical Gymnasium and am currently continuing my education at Riga Technical College, where I study programming.
+Since my school years, I have been especially interested in history, geography, and mathematics — subjects through which I not only gain knowledge but also find true joy and inspiration. At the end of 9th grade, I had the opportunity to try myself as a teacher: I conducted several lessons in mathematics, history, and geography. This experience gave me a new perspective on the learning process and strengthened my confidence in my abilities — I received positive feedback from both teachers and classmates, who appreciated my ability to explain topics clearly and engage interest in the subject.
+In my free time, I enjoy watching videos about the Middle Ages, the Age of Colonization, and other historical periods to broaden my horizons. This fascination with history is closely connected to my hobby — writing.`
+      },
+      ru: {
+        name: "Русский",
+        title: "Обо мне",
+        content: `Меня зовут Артём, и я живу в Риге, Латвия. Я окончил Рижскую классическую государственную гимназию и сейчас продолжаю обучение в Рижском техническом колледже по направлению программирования.
+С самого школьного возраста меня особенно интересуют история, география и математика — предметы, в которых я не только получаю знания, но и нахожу настоящее удовольствие и вдохновение. В конце 9 класса у меня появилась возможность попробовать себя в роли учителя: я проводил несколько уроков по математике, истории и географии. Этот опыт дал мне новый взгляд на учебный процесс и уверенность в своих силах — я получил положительные отзывы как от учителей, так и от одноклассников, которые отметили мою способность ясно и доступно объяснять материал и пробуждать интерес к теме.
+В свободное время я с удовольствием смотрю видео о событиях Средневековья, эпохи колонизации и других исторических периодах, чтобы расширить свой кругозор. Мой интерес к истории тесно связан с моим хобби — письмом.`
+      }
+    };
+
+    let currentLang = 'lv';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.getElementById('title').innerText = translations[lang].title;
+      document.getElementById('content').innerText = translations[lang].content;
+
+      document.querySelectorAll('.lang-option').forEach(el => {
+        el.classList.remove('active');
+        if (el.dataset.lang === lang) el.classList.add('active');
+      });
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+
+    function renderLangOptions() {
+      const langSelector = document.getElementById('langSelector');
+      langSelector.innerHTML = '';
+      for (let code in translations) {
+        const langDiv = document.createElement('div');
+        langDiv.className = 'lang-option';
+        langDiv.dataset.lang = code;
+        langDiv.innerHTML = `
+          <img src="https://flagcdn.com/w40/${code === 'en' ? 'gb' : code}.png" alt="${translations[code].name}" />
+          ${translations[code].name}
+        `;
+        langDiv.onclick = () => setLang(code);
+        if (code === currentLang) langDiv.classList.add('active');
+        langSelector.appendChild(langDiv);
+      }
+    }
+
+    renderLangOptions();
+    setLang(currentLang);
+  </script>
+</body>
+</html>
