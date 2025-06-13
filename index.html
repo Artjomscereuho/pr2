@@ -1,220 +1,246 @@
-<!DOCTYPE html>
-<html lang="lv">
+<!DOCTYPE html> 
+<!-- Norāda, ka dokuments ir HTML5 standarts -->
+
+<html lang="lv"> 
+<!-- HTML dokumenta sākums; valoda norādīta latviešu (lv) -->
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-  <title>Personīgā Lapa</title>
+  <meta charset="UTF-8" /> 
+  <!-- Teksta kodējums: UTF-8, kas atbalsta daudz valodu simbolus -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <!-- Skata loga iestatījums, lai vietne būtu pielāgojama dažādām ierīcēm -->
+  
+  <title>Personīgā Lapa</title> 
+  <!-- Tās lapas nosaukums, kas redzams cilnē pārlūkā -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Savieno Google fontu "Playfair Display" ar diviem svaru (font-weight) variantiem: 400 (parasts) un 700 (trekns) -->
+  
   <style>
+    /* Sāk CSS stilu definīcija */
+
     :root {
-      --bg-light: #fcf9f0;
-      --bg-dark: #1c1a17;
-      --text-light: #2e2e2e;
-      --text-dark: #eae0c8;
-      --accent: #bfa46f;
-      --border-color: #d3c3a3;
-      --font: 'Playfair Display', serif;
+      /* CSS mainīgo (kā krāsu, fontu) definīcija globālā līmenī */
+      --bg-light: #fcf9f0; /* Gaiša fona krāsa */
+      --bg-dark: #1c1a17; /* Tumša fona krāsa tumšajam režīmam */
+      --text-light: #2e2e2e; /* Gaiša teksta krāsa */
+      --text-dark: #eae0c8; /* Tumša teksta krāsa tumšajam režīmam */
+      --accent: #bfa46f; /* Akcenta krāsa, piemēram, virsrakstiem vai pogām */
+      --border-color: #d3c3a3; /* Robežas krāsa */
+      --font: 'Playfair Display', serif; /* Izvēlētais fonts */
     }
 
     body {
-      margin: 0;
-      font-family: var(--font);
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      transition: background-color 0.4s, color 0.4s;
-      font-size: 18px;
-      line-height: 1.8;
+      margin: 0; /* Noņem noklusēto lapas malu */
+      font-family: var(--font); /* Lieto definēto fontu */
+      background-color: var(--bg-light); /* Iestata gaišu fona krāsu */
+      color: var(--text-light); /* Teksta krāsa */
+      transition: background-color 0.4s, color 0.4s; /* Pārejas efekts fona un teksta krāsas maiņai */
+      font-size: 18px; /* Teksta bāzes lielums */
+      line-height: 1.8; /* Rindu augstums ērtai lasīšanai */
     }
 
     .dark-theme {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
+      background-color: var(--bg-dark); /* Tumšā režīma fons */
+      color: var(--text-dark); /* Tumšā režīma teksta krāsa */
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5em 2em;
-      background-color: var(--accent);
-      color: white;
-      border-bottom: 2px solid var(--border-color);
+      display: flex; /* Izmanto flexbox, lai elementus izvietotu rindā */
+      justify-content: space-between; /* Izvieto elementus tā, ka tie ir izkliedēti pa visu platumu */
+      align-items: center; /* Vertikāla centrēšana */
+      padding: 1.5em 2em; /* Iekšējais attālums (vertikāli un horizontāli) */
+      background-color: var(--accent); /* Header fona krāsa (akcenta krāsa) */
+      color: white; /* Teksta krāsa baltā */
+      border-bottom: 2px solid var(--border-color); /* Apakšējā rinda kā robeža */
     }
 
     .dark-theme header {
-      background-color: #3a2e1d;
+      background-color: #3a2e1d; /* Tumšā režīma header fona krāsa */
     }
 
     .lang-switch {
-      display: flex;
-      gap: 12px;
-      align-items: center;
+      display: flex; /* Flex konteineris */
+      gap: 12px; /* Atstatums starp elementiem */
+      align-items: center; /* Vertikāla centrēšana */
     }
 
     .lang-option {
-      display: flex;
-      align-items: center;
-      padding: 5px 10px;
-      border: 2px solid transparent;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-      background-color: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 16px;
+      display: flex; /* Flex elements */
+      align-items: center; /* Vertikāla centrēšana */
+      padding: 5px 10px; /* Iekšējais attālums */
+      border: 2px solid transparent; /* Robeža sākumā caurspīdīga */
+      border-radius: 5px; /* Noapaļoti stūri */
+      cursor: pointer; /* Rādītājs mainās uz "pirkstu" uzklikšķinot */
+      transition: 0.3s; /* Pārejas laiks vizuālām izmaiņām */
+      background-color: rgba(255,255,255,0.1); /* Nedaudz caurspīdīgs balts fons */
+      color: white; /* Teksts balts */
+      font-size: 16px; /* Teksta izmērs */
     }
 
     .lang-option img {
-      width: 24px;
-      height: 16px;
-      margin-right: 6px;
+      width: 24px; /* Karodziņa platums */
+      height: 16px; /* Karodziņa augstums */
+      margin-right: 6px; /* Atstatums starp karodziņu un tekstu */
     }
 
     .lang-option.active {
-      border: 2px solid white;
-      background-color: rgba(255,255,255,0.3);
+      border: 2px solid white; /* Aktīvās valodas robeža balta */
+      background-color: rgba(255,255,255,0.3); /* Tumšāks fons aktīvai valodai */
     }
 
     button.theme-btn {
-      background: none;
-      border: 1px solid white;
-      padding: 0.5em 1em;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: var(--font);
+      background: none; /* Bez fona */
+      border: 1px solid white; /* Balta robeža */
+      padding: 0.5em 1em; /* Iekšējais attālums */
+      color: white; /* Teksta krāsa */
+      border-radius: 5px; /* Noapaļoti stūri */
+      cursor: pointer; /* Klikšķināms rādītājs */
+      font-family: var(--font); /* Lieto definēto fontu */
     }
 
     .container {
-      max-width: 900px;
-      margin: 3em auto;
-      background-color: #fff8ed;
-      border: 2px solid var(--border-color);
-      padding: 3em 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 900px; /* Maksimālais platums */
+      margin: 3em auto; /* Vertikāls atstatums, centrē horizontāli */
+      background-color: #fff8ed; /* Gaišs fona tonis */
+      border: 2px solid var(--border-color); /* Robeža */
+      padding: 3em 2em; /* Iekšējais attālums */
+      border-radius: 12px; /* Noapaļoti stūri */
+      box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Viegls ēnojums */
     }
 
     .dark-theme .container {
-      background-color: #2b241c;
-      border-color: #6c5b3b;
+      background-color: #2b241c; /* Tumšā režīma konteineris */
+      border-color: #6c5b3b; /* Tumšāka robeža */
     }
 
     h1, h2 {
-      text-align: center;
-      color: var(--accent);
+      text-align: center; /* Centrē virsrakstus */
+      color: var(--accent); /* Akcenta krāsa */
     }
 
     .dark-theme h1,
     .dark-theme h2 {
-      color: #d1ba86;
+      color: #d1ba86; /* Tumšā režīma virsrakstu krāsa */
     }
 
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-top: 2em;
+      display: grid; /* Izvieto attēlus režģī */
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Kolonnas mainās atkarībā no ekrāna */
+      gap: 12px; /* Atstarpes starp attēliem */
+      margin-top: 2em; /* Atstarpe virs galerijas */
     }
 
     .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-      border: 1px solid var(--border-color);
+      width: 100%; /* Attēls aizpilda kolonnu */
+      height: auto; /* Proporcionāla augstums */
+      border-radius: 8px; /* Noapaļoti stūri */
+      object-fit: cover; /* Attēls aizpilda vietu, saglabājot proporcijas */
+      transition: transform 0.3s ease; /* Pārejas efekts mērogam */
+      border: 1px solid var(--border-color); /* Plāna robeža */
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.05); /* Nedaudz palielina attēlu uz peles novietojumu */
     }
 
     footer {
-      text-align: center;
-      padding: 2em;
-      font-size: 14px;
-      color: #777;
+      text-align: center; /* Centrē tekstu */
+      padding: 2em; /* Iekšējais attālums */
+      font-size: 14px; /* Mazāks fonts */
+      color: #777; /* Pelēka teksta krāsa */
     }
 
     .social-links {
-      margin-top: 10px;
+      margin-top: 10px; /* Atstarpe virs sociālo saišu bloka */
     }
 
     .social-links a {
-      display: inline-block;
-      margin: 0 8px;
-      transition: transform 0.2s;
+      display: inline-block; /* Izvieto blakus elementus */
+      margin: 0 8px; /* Horizontāls atstatums starp saitēm */
+      transition: transform 0.2s; /* Ātra pāreja mērogošanai */
     }
 
     .social-links a img {
-      width: 28px;
-      height: 28px;
-      filter: grayscale(100%) brightness(1.2);
+      width: 28px; /* Ikonas platums */
+      height: 28px; /* Ikonas augstums */
+      filter: grayscale(100%) brightness(1.2); /* Pelēktoņi un gaišums */
     }
 
     .social-links a:hover img {
-      transform: scale(1.1);
-      filter: none;
+      transform: scale(1.1); /* Ikona nedaudz palielinās uz peles novietojumu */
+      filter: none; /* Noņem filtrus, kļūst krāsaina */
     }
 
     @media (max-width: 600px) {
+      /* Mobilajām ierīcēm */
+
       body {
-        font-size: 16px;
-        line-height: 1.6;
+        font-size: 16px; /* Mazāks teksts */
+        line-height: 1.6; /* Mazāka rindu augstums */
       }
 
       header {
-        flex-wrap: wrap;
-        padding: 1em;
-        gap: 10px;
+        flex-wrap: wrap; /* Header elementi pārlec uz jaunu rindu */
+        padding: 1em; /* Mazāks iekšējais attālums */
+        gap: 10px; /* Atstarpe starp elementiem */
       }
 
       .lang-switch {
-        justify-content: center;
-        width: 100%;
+        justify-content: center; /* Izvieto valodas izvēli centrā */
+        width: 100%; /* Pilna platuma */
       }
 
       .container {
-        margin: 1.5em 1em;
-        padding: 2em 1em;
+        margin: 1.5em 1em; /* Mazāks ārējais atstatums */
+        padding: 2em 1em; /* Mazāks iekšējais attālums */
       }
 
       h1 {
-        font-size: 1.8em;
+        font-size: 1.8em; /* Samazināts virsraksta izmērs */
       }
 
       .lang-option {
-        padding: 4px 8px;
-        font-size: 14px;
+        padding: 4px 8px; /* Mazāks padding */
+        font-size: 14px; /* Mazāks teksts */
       }
 
       .lang-option img {
-        width: 20px;
+        width: 20px; /* Mazāki karodziņi */
         height: 14px;
         margin-right: 4px;
       }
 
       .social-links a img {
-        width: 24px;
+        width: 24px; /* Mazākas sociālo ikonas */
         height: 24px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="lang-switch" id="langSelector"></div>
+    <!-- Valodu izvēles bloks, kurā tiks ievietotas valodu pogas -->
+    
     <div>
       <button class="theme-btn" onclick="toggleTheme()">🌗 Tēma</button>
+      <!-- Poga, kas ieslēdz un izslēdz tumšo/gaišo tēmu, uz tās ir mēness un saule simbols -->
     </div>
   </header>
 
   <div class="container">
-    <h1 id="title">Par Mani</h1>
-    <p id="content"></p>
+    <h1 id="title">Par Mani</h1> 
+    <!-- Galvenais virsraksts, mainās atkarībā no valodas -->
+    
+    <p id="content"></p> 
+    <!-- Saturs par mani, mainās pēc valodas izvēles -->
 
-    <h2>Galerija</h2>
+    <h2>Galerija</h2> 
+    <!-- Apakšvirsraksts galerijai -->
+
     <div class="gallery">
       <img src="bilde1.png" alt="Galerijas bilde 1">
       <img src="bilde2.jpeg" alt="Galerijas bilde 2">
@@ -226,11 +252,14 @@
       <img src="bilde8.jpeg" alt="Galerijas bilde 8">
       <img src="bilde9.jpeg" alt="Galerijas bilde 9">
       <img src="bilde10.jpeg" alt="Galerijas bilde 10">
+      <!-- Attēlu galerija ar 10 attēliem, ar alternatīvajiem tekstiem SEO un pieejamībai -->
     </div>
   </div>
 
   <footer>
     &copy; 2025 Artjoms. Visi tiesības aizsargātas. <br>
+    <!-- Autortiesību paziņojums -->
+
     <div class="social-links">
       <a href="https://www.youtube.com" target="_blank" title="YouTube">
         <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
@@ -238,19 +267,26 @@
       <a href="https://www.instagram.com/" target="_blank" title="Instagram">
         <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
       </a>
+      <!-- Sociālo tīklu saites ar ikonām, kas atveras jaunā cilnē -->
     </div>
   </footer>
 
   <script>
+    /* JavaScript daļa, kas kontrolē valodas izvēli un tēmas pārslēgšanu */
+
     const translations = {
+      /* Objekts ar valodu saturu */
       lv: {
-        name: "Latviešu",
-        title: "Par Mani",
+        /* Latviešu valoda */
+        name: "Latviešu", // Valodas nosaukums izvēlnē
+        title: "Par Mani", // Virsraksts lapā
         content: `Mani sauc Artjoms, un es dzīvoju Rīgā, Latvijā. Esmu pabeidzis Rīgas Valsts klasisko ģimnāziju un šobrīd turpinu izglītību Rīgas Tehniskajā koledžā, kur apgūstu programmēšanas virzienu.<br><br>
 Jau kopš skolas gadiem mani īpaši saista vēsture, ģeogrāfija un matemātika — priekšmeti, kuros es ne tikai gūstu zināšanas, bet arī rodu patiesu prieku un iedvesmu. 9. klases noslēgumā man bija iespēja izmēģināt sevi kā skolotājam: es vadīju vairākas matemātikas, vēstures un ģeogrāfijas stundas. Šī pieredze man sniedza pārliecību par savām spējām.<br><br>
 Brīvajos brīžos labprāt skatos video par viduslaiku notikumiem, kolonizācijas laikmetu un citiem vēsturiskiem posmiem. Tāpat man patīk datorspēles, piemēram, Hearts of Iron IV, Age of Civilizations II, Minecraft un Cities: Skylines.`
+        /* Saturs lapā, HTML formatā ar rindkopām */
       },
       en: {
+        /* Angļu valoda */
         name: "English",
         title: "About Me",
         content: `My name is Artjoms, and I live in Riga, Latvia. I graduated from Riga State Classical Gymnasium and am currently continuing my education at Riga Technical College, where I am studying programming.<br><br>
@@ -258,6 +294,7 @@ Since my school years, I have been especially interested in history, geography, 
 In my free time, I enjoy watching videos about medieval events, the age of colonization, and other historical periods. I also like computer games such as Hearts of Iron IV, Age of Civilizations II, Minecraft, and Cities: Skylines.`
       },
       ru: {
+        /* Krievu valoda */
         name: "Русский",
         title: "Обо мне",
         content: `Меня зовут Артём, я живу в Риге, Латвия. Я окончил Рижскую государственную классическую гимназию и в настоящее время продолжаю обучение в Рижском техническом колледже по направлению программирования.<br><br>
@@ -266,42 +303,62 @@ In my free time, I enjoy watching videos about medieval events, the age of colon
       }
     };
 
-    let currentLang = 'lv';
+    let currentLang = 'lv'; 
+    // Mainīgais, kas satur pašreizējo valodu, sākumā latviešu
 
     function setLang(lang) {
-      currentLang = lang;
+      // Funkcija valodas iestatīšanai
+      currentLang = lang; // Atjauno pašreizējo valodu
+      
+      // Uzstāda virsrakstu atbilstoši valodai
       document.getElementById('title').innerText = translations[lang].title;
+      
+      // Uzstāda galveno saturu
       document.getElementById('content').innerHTML = translations[lang].content;
-
-      document.querySelectorAll('.lang-option').forEach(el => {
-        el.classList.remove('active');
-        if (el.dataset.lang === lang) el.classList.add('active');
+      
+      // Atjauno aktīvās valodas izvēli
+      const langOptions = document.querySelectorAll('.lang-option');
+      langOptions.forEach(option => {
+        if (option.dataset.lang === lang) {
+          option.classList.add('active');
+        } else {
+          option.classList.remove('active');
+        }
       });
     }
 
     function toggleTheme() {
+      // Funkcija, kas pārslēdz starp gaišo un tumšo režīmu
       document.body.classList.toggle('dark-theme');
     }
 
-    function renderLangOptions() {
-      const langSelector = document.getElementById('langSelector');
-      langSelector.innerHTML = '';
-      for (let code in translations) {
-        const langDiv = document.createElement('div');
-        langDiv.className = 'lang-option';
-        langDiv.dataset.lang = code;
-        langDiv.innerHTML = `
-          <img src="https://flagcdn.com/w40/${code === 'en' ? 'gb' : code}.png" alt="${translations[code].name}" />
-          ${translations[code].name}
-        `;
-        langDiv.onclick = () => setLang(code);
-        if (code === currentLang) langDiv.classList.add('active');
-        langSelector.appendChild(langDiv);
-      }
+    // Izveido valodu pogas dinamiskā veidā
+    const langSelector = document.getElementById('langSelector');
+    for (const [key, value] of Object.entries(translations)) {
+      const btn = document.createElement('div');
+      btn.className = 'lang-option';
+      btn.dataset.lang = key;
+      
+      // Izveido karodziņa attēlu
+      const img = document.createElement('img');
+      img.src = `flags/${key}.png`; // Pieņem, ka karodziņi ir mapē flags un nosaukti pēc valodu kodiem (lv.png, en.png, ru.png)
+      img.alt = `${value.name} flag`;
+      btn.appendChild(img);
+      
+      // Pievieno valodas nosaukumu
+      const textNode = document.createTextNode(value.name);
+      btn.appendChild(textNode);
+      
+      // Pievieno klikšķa notikumu, lai mainītu valodu
+      btn.onclick = () => setLang(key);
+      
+      // Pievieno pogu izvēles blokam
+      langSelector.appendChild(btn);
     }
 
-    renderLangOptions();
+    // Uzstāda sākotnējo valodu pēc ielādes
     setLang(currentLang);
   </script>
 </body>
+
 </html>
