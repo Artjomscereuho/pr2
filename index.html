@@ -15,26 +15,6 @@
       --border-color: #d3c3a3;
       --font: 'Playfair Display', serif;
     }
-.social-links {
-  margin-top: 10px;
-}
-
-.social-links a {
-  display: inline-block;
-  margin: 0 8px;
-  transition: transform 0.2s;
-}
-
-.social-links a img {
-  width: 28px;
-  height: 28px;
-  filter: grayscale(100%) brightness(1.2);
-}
-
-.social-links a:hover img {
-  transform: scale(1.1);
-  filter: none;
-}
 
     body {
       margin: 0;
@@ -120,15 +100,34 @@
       border-color: #6c5b3b;
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 1em;
       color: var(--accent);
     }
 
-    .dark-theme h1 {
+    .dark-theme h1,
+    .dark-theme h2 {
       color: #d1ba86;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 2em;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
     footer {
@@ -136,6 +135,27 @@
       padding: 2em;
       font-size: 14px;
       color: #777;
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+      transition: transform 0.2s;
+    }
+
+    .social-links a img {
+      width: 28px;
+      height: 28px;
+      filter: grayscale(100%) brightness(1.2);
+    }
+
+    .social-links a:hover img {
+      transform: scale(1.1);
+      filter: none;
     }
 
     @media (max-width: 600px) {
@@ -184,9 +204,7 @@
 </head>
 <body>
   <header>
-    <div class="lang-switch" id="langSelector">
-      <!-- Dinamiska valodu izvēle -->
-    </div>
+    <div class="lang-switch" id="langSelector"></div>
     <div>
       <button class="theme-btn" onclick="toggleTheme()">🌗 Tēma</button>
     </div>
@@ -195,42 +213,56 @@
   <div class="container">
     <h1 id="title">Par Mani</h1>
     <p id="content"></p>
+
+    <h2>Galerija</h2>
+    <div class="gallery">
+      <img src="bilde1.png" alt="Galerijas bilde 1">
+      <img src="bilde2.jpeg" alt="Galerijas bilde 2">
+      <img src="bilde3.jpeg" alt="Galerijas bilde 3">
+      <img src="bilde4.jpeg" alt="Galerijas bilde 4">
+      <img src="bilde5.jpeg" alt="Galerijas bilde 5">
+      <img src="bilde6.jpeg" alt="Galerijas bilde 6">
+      <img src="bilde7.jpeg" alt="Galerijas bilde 7">
+      <img src="bilde8.jpeg" alt="Galerijas bilde 8">
+      <img src="bilde9.jpeg" alt="Galerijas bilde 9">
+      <img src="bilde10.jpeg" alt="Galerijas bilde 10">
+    </div>
   </div>
 
-<footer>
-  &copy; 2025 Artjoms. Visi tiesības aizsargātas. <br>
-  <div class="social-links">
-    <a href="https://www.youtube.com" target="_blank" title="YouTube">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-    </a>
-    <a href="https://www.instagram.com/" target="_blank" title="Instagram">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
-    </a>
-  </div>
-</footer>
+  <footer>
+    &copy; 2025 Artjoms. Visi tiesības aizsargātas. <br>
+    <div class="social-links">
+      <a href="https://www.youtube.com" target="_blank" title="YouTube">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+      </a>
+    </div>
+  </footer>
 
   <script>
     const translations = {
       lv: {
         name: "Latviešu",
         title: "Par Mani",
-        content: `Mani sauc Artjoms, un es dzīvoju Rīgā, Latvijā. Esmu pabeidzu Rīgas Valsts klasisko ģimnāziju un šobrīd turpinu izglītību Rīgas Tehniskajā koledžā, kur apgūstu programmēšanas virzienu.
-Jau kopš skolas gadiem mani īpaši saista vēsture, ģeogrāfija un matemātika — priekšmeti, kuros es ne tikai gūstu zināšanas, bet arī rodu patiesu prieku un iedvesmu. 9. klases noslēgumā man bija iespēja izmēģināt sevi kā skolotājam: es vadīju vairākas matemātikas, vēstures un ģeogrāfijas stundas. Šī pieredze man sniedza ne tikai jaunu skatījumu uz mācību procesu, bet arī pārliecību par savām spējām — saņēmu pozitīvas atsauksmes gan no skolotājiem, gan no klasesbiedriem, kas atzina manu spēju skaidri un saprotami izklāstīt vielu, kā arī veicināt interesi par tematu.
-Brīvajos brīžos labprāt skatos video par viduslaiku notikumiem, kolonizācijas laikmetu un citiem vēsturiskiem posmiem, lai paplašinātu redzesloku jo, šī aizrautība ar vēsturiskiem notikumiem ir cieši saistīta ar manu hobiju — rakstīšanu.`
+        content: `Mani sauc Artjoms, un es dzīvoju Rīgā, Latvijā. Esmu pabeidzis Rīgas Valsts klasisko ģimnāziju un šobrīd turpinu izglītību Rīgas Tehniskajā koledžā, kur apgūstu programmēšanas virzienu.<br><br>
+Jau kopš skolas gadiem mani īpaši saista vēsture, ģeogrāfija un matemātika — priekšmeti, kuros es ne tikai gūstu zināšanas, bet arī rodu patiesu prieku un iedvesmu. 9. klases noslēgumā man bija iespēja izmēģināt sevi kā skolotājam: es vadīju vairākas matemātikas, vēstures un ģeogrāfijas stundas. Šī pieredze man sniedza pārliecību par savām spējām.<br><br>
+Brīvajos brīžos labprāt skatos video par viduslaiku notikumiem, kolonizācijas laikmetu un citiem vēsturiskiem posmiem. Tāpat man patīk datorspēles, piemēram, Hearts of Iron IV, Age of Civilizations II, Minecraft un Cities: Skylines.`
       },
       en: {
         name: "English",
         title: "About Me",
-        content: `My name is Artjoms, and I live in Riga, Latvia. I graduated from Riga State Classical Gymnasium and am currently continuing my education at Riga Technical College, where I study programming.
-Since my school years, I have been especially interested in history, geography, and mathematics — subjects through which I not only gain knowledge but also find true joy and inspiration. At the end of 9th grade, I had the opportunity to try myself as a teacher: I conducted several lessons in mathematics, history, and geography. This experience gave me a new perspective on the learning process and strengthened my confidence in my abilities — I received positive feedback from both teachers and classmates, who appreciated my ability to explain topics clearly and engage interest in the subject.
-In my free time, I enjoy watching videos about the Middle Ages, the Age of Colonization, and other historical periods to broaden my horizons. This fascination with history is closely connected to my hobby — writing.`
+        content: `My name is Artjoms, and I live in Riga, Latvia. I graduated from Riga State Classical Gymnasium and am currently continuing my education at Riga Technical College, where I am studying programming.<br><br>
+Since my school years, I have been especially interested in history, geography, and mathematics — subjects through which I not only gain knowledge but also find genuine joy and inspiration. At the end of 9th grade, I had the opportunity to try myself as a teacher: I conducted several lessons in mathematics, history, and geography. This experience gave me confidence in my abilities.<br><br>
+In my free time, I enjoy watching videos about medieval events, the age of colonization, and other historical periods. I also like computer games such as Hearts of Iron IV, Age of Civilizations II, Minecraft, and Cities: Skylines.`
       },
       ru: {
         name: "Русский",
         title: "Обо мне",
-        content: `Меня зовут Артём, и я живу в Риге, Латвия. Я окончил Рижскую классическую государственную гимназию и сейчас продолжаю обучение в Рижском техническом колледже по направлению программирования.
-С самого школьного возраста меня особенно интересуют история, география и математика — предметы, в которых я не только получаю знания, но и нахожу настоящее удовольствие и вдохновение. В конце 9 класса у меня появилась возможность попробовать себя в роли учителя: я проводил несколько уроков по математике, истории и географии. Этот опыт дал мне новый взгляд на учебный процесс и уверенность в своих силах — я получил положительные отзывы как от учителей, так и от одноклассников, которые отметили мою способность ясно и доступно объяснять материал и пробуждать интерес к теме.
-В свободное время я с удовольствием смотрю видео о событиях Средневековья, эпохи колонизации и других исторических периодах, чтобы расширить свой кругозор. Мой интерес к истории тесно связан с моим хобби — письмом.`
+        content: `Меня зовут Артём, я живу в Риге, Латвия. Я окончил Рижскую государственную классическую гимназию и в настоящее время продолжаю обучение в Рижском техническом колледже по направлению программирования.<br><br>
+С школьных лет меня особенно интересуют история, география и математика — предметы, в которых я не только получаю знания, но и нахожу настоящее удовольствие и вдохновение. В конце 9-го класса у меня была возможность попробовать себя в роли учителя: я провёл несколько уроков по математике, истории и географии. Этот опыт придал мне уверенность в своих силах.<br><br>
+В свободное время я люблю смотреть видео о средневековых событиях, эпохе колонизации и других исторических периодах. Также мне нравятся компьютерные игры, такие как Hearts of Iron IV, Age of Civilizations II, Minecraft и Cities: Skylines.`
       }
     };
 
@@ -239,7 +271,7 @@ In my free time, I enjoy watching videos about the Middle Ages, the Age of Colon
     function setLang(lang) {
       currentLang = lang;
       document.getElementById('title').innerText = translations[lang].title;
-      document.getElementById('content').innerText = translations[lang].content;
+      document.getElementById('content').innerHTML = translations[lang].content;
 
       document.querySelectorAll('.lang-option').forEach(el => {
         el.classList.remove('active');
